@@ -1,0 +1,29 @@
+{
+	"name": "C2N3_C3N3",
+	"version": "1.0.0",
+	"description": "C'est un projet pour valider les compétences C3N3 (C2N3).",
+	"main": "index.js",
+	"scripts": {
+		"compile": "node-sass Starter-file/sass/main.scss Starter-file/dist/css/style.css",
+		"watch": "node-sass Starter-file/sass/main.scss Starter-file/dist/css/style.css --watch",
+		"prefix": "postcss --use autoprefixer -b 'last 5 versions' css/style.css -o css/style.prefix.css",
+		"compress": "node-sass css/style.prefix.css css/style.css js/script.js --output-style compressed",
+		"build-css": "npm-run-all compile prefix compress"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/AbdelRochdi/C2N3_C3N3.git"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/AbdelRochdi/C2N3_C3N3/issues"
+	},
+	"homepage": "https://github.com/AbdelRochdi/C2N3_C3N3#readme",
+	"devDependencies": {
+		"autoprefixer": "^9.7.5",
+		"npm-run-all": "^4.1.5",
+		"postcss-cli": "^7.1.0"
+	}
+}
