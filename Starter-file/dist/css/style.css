@@ -1,0 +1,14 @@
+.header__nav {
+  background: url(../../../Design/Assets/png/Merged-bar-1.png);
+  display: flex;
+  justify-content: space-evenly; }
+  .header__nav__links {
+    list-style-type: none; }
+    .header__nav__links a {
+      text-decoration: none; }
+    .header__nav__links__advice {
+      color: #1078AD; }
+
+body {
+  margin: 0;
+  padding: 0; }
