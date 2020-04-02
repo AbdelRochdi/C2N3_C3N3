@@ -6,6 +6,9 @@
 		display: flex;
 		justify-content: space-between;
 		padding: 0.5em;
+		@include desktop{
+			padding: 1em;
+		}
 		&__links {
 			display: flex;
 			list-style-type: none;
@@ -42,6 +45,8 @@
 			font-weight: 700;
 			line-height: 2.2em;
 			font-size: 0.8em;
+			max-width: 600px;
+			margin: 0 auto;
 		}
 	}
 }

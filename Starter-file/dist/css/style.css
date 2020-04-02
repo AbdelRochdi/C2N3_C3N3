@@ -1,10 +1,18 @@
 .footer {
   text-align: center;
   margin-top: 2em; }
+  @media screen and (min-width: 1200px) {
+    .footer__wrapper {
+      display: flex;
+      justify-content: space-evenly;
+      padding: 1em 0; } }
   .footer__links {
     display: flex;
     justify-content: space-around;
     font-size: 0.7em; }
+    @media screen and (min-width: 1200px) {
+      .footer__links {
+        width: 50%; } }
     .footer__links ul {
       list-style-type: none;
       padding: 0; }
@@ -30,6 +38,11 @@
     font-size: 0.8em;
     padding: 2em;
     line-height: 1.5em; }
+    @media screen and (min-width: 1200px) {
+      .footer p {
+        width: 40%;
+        padding: 0em;
+        text-align: left; } }
   .footer .base {
     background-color: #1078ad;
     width: 100%;
@@ -42,6 +55,9 @@
     display: flex;
     justify-content: space-between;
     padding: 0.5em; }
+    @media screen and (min-width: 1200px) {
+      .header__nav {
+        padding: 1em; } }
     .header__nav__links {
       display: flex;
       list-style-type: none;
@@ -73,10 +89,22 @@
       padding: 0 2.7em;
       font-weight: 700;
       line-height: 2.2em;
-      font-size: 0.8em; }
+      font-size: 0.8em;
+      max-width: 600px;
+      margin: 0 auto; }
 
 .test {
   text-align: center; }
+  @media screen and (min-width: 1200px) {
+    .test {
+      display: flex;
+      justify-content: space-around; } }
+  @media screen and (min-width: 1200px) {
+    .test__doctors {
+      width: 40%; } }
+  @media screen and (min-width: 1200px) {
+    .test__article {
+      width: 42%; } }
   .test h3 {
     font-weight: 700;
     color: #1078ad;
@@ -115,6 +143,10 @@
     display: flex;
     justify-content: space-around;
     margin: 1.5em 0; }
+    @media screen and (min-width: 1200px) {
+      .symptomes__images__row {
+        justify-content: center;
+        padding: 1em 8em; } }
     .symptomes__images__row div {
       display: flex;
       flex-direction: column;
@@ -129,15 +161,32 @@
 .recommendations {
   text-align: center;
   background-color: #1078ad; }
+  .recommendations h3 {
+    color: #96c5dc;
+    padding: 1em; }
   .recommendations__article {
     padding: 1.5em; }
-    .recommendations__article h3 {
-      color: #96c5dc; }
+    @media screen and (min-width: 1200px) {
+      .recommendations__article {
+        display: flex;
+        justify-content: space-between; } }
+    @media screen and (min-width: 1200px) {
+      .recommendations__article__text {
+        width: 40%;
+        margin-left: 4em; } }
+    @media screen and (min-width: 1200px) {
+      .recommendations__article__contact {
+        width: 40%; } }
     .recommendations__article p {
       color: white;
       font-weight: 600;
       font-size: 0.8em;
       line-height: 1.5em; }
+      @media screen and (min-width: 1200px) {
+        .recommendations__article p {
+          text-align: left;
+          font-size: 0.9em;
+          line-height: 2em; } }
     .recommendations__article h6 {
       color: #f4cf1b; }
     .recommendations__article h4 {
@@ -158,6 +207,9 @@
     color: #1078ad; }
     .recommendations__CTA img {
       width: 10%; }
+      @media screen and (min-width: 1200px) {
+        .recommendations__CTA img {
+          width: 5%; } }
     .recommendations__CTA button {
       text-decoration: none;
       color: white;
@@ -170,7 +222,8 @@
       max-width: 600px;
       background: url(../../../Design/Assets/png/demarrer.png);
       margin: 1em auto;
-      width: 50%; }
+      width: 50%;
+      max-width: 500px; }
 
 body {
   margin: 0;

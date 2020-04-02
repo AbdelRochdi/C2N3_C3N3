@@ -4,10 +4,21 @@
 	text-align: center;
 	margin-top: 2em;
 
+	&__wrapper {
+		@include desktop {
+			display: flex;
+			justify-content: space-evenly;
+			padding: 1em 0;
+		}
+	}
+
 	&__links {
 		display: flex;
 		justify-content: space-around;
 		font-size: 0.7em;
+		@include desktop {
+			width: 50%;
+		}
 		ul {
 			list-style-type: none;
 			padding: 0;
@@ -40,6 +51,11 @@
 		font-size: 0.8em;
 		padding: 2em;
 		line-height: 1.5em;
+		@include desktop {
+			width: 40%;
+			padding: 0em;
+			text-align: left;
+		}
 	}
 	.base {
 		background-color: $primary;
