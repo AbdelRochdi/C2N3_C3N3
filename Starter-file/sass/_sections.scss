@@ -1,0 +1,106 @@
+@import "variables";
+
+.test {
+	text-align: center;
+	h3 {
+		font-weight: 700;
+		color: $primary;
+		padding: 1em 2em;
+		line-height: 1.5em;
+	}
+	p {
+		padding: 1em 2em;
+		color: $neutral2;
+		font-size: 0.9em;
+		line-height: 1.5em;
+	}
+	button {
+        @include btn;
+	}
+}
+
+
+.symptomes {
+	text-align: center;
+	h3 {
+		color: $primary;
+		padding: 1em 6em;
+	}
+	&__images {
+		
+		img {
+            width: 50px;
+            height: 70px;
+		}
+		
+		.fievre{
+			width: 35px;
+			height: 90px;
+		}
+		
+		&__row {
+			display: flex;
+            justify-content: space-around;
+            margin: 1.5em 0;
+			div {
+				display: flex;
+				flex-direction: column;
+				text-align: center;
+				justify-content: center;
+                align-items: center;
+                width: 40%;
+				span {
+                    padding: 1.5em 2em;
+                    font-weight: 600;
+				}
+			}
+		}
+	}
+}
+
+.recommendations {
+	text-align: center;
+	background-color: $primary;
+	
+	&__article {
+        padding: 1.5em;
+		h3 {
+			color: $secondary2;
+		}
+		p {
+			color: $neutral4;
+			font-weight: 600;
+			font-size: 0.8em;
+			line-height: 1.5em;
+		}
+		h6 {
+			color: $secondary;
+		}
+		h4 {
+			color: $primary;
+			background-color: $secondary;
+			width: 30%;
+			padding: 0.8em;
+			border-radius: 0.2em;
+			margin: 1em auto;
+		}
+		a {
+			text-decoration: none;
+			color: $neutral4;
+			border-bottom: 1px solid $secondary;
+		}
+	}
+	&__CTA {
+        background-color: $secondary2;
+        padding: 1em;
+        font-size: 0.8em;
+        color: $primary;
+        img{
+			width: 10%;
+		}
+		button{
+			@include btn;
+			width: 50%;
+		}
+	}
+}

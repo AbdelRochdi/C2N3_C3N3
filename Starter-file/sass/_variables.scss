@@ -1,5 +1,29 @@
-$primary:#1078AD;
-$secondary:#F4CF1B;
-$neutral1:black;
-$neutral2:#7F7F7F;
-$neutral3:#369D53;
+$primary: #1078ad;
+$secondary: #f4cf1b;
+$secondary2: #96c5dc;
+$neutral1: black;
+$neutral2: #7f7f7f;
+$neutral3: #369d53;
+$neutral4: white;
+
+@mixin btn {
+	text-decoration: none;
+	color: white;
+	font-weight: 700;
+	border: 1px solid $primary;
+	padding: 0.5em;
+	border-radius: 0.3em;
+	font-size: 1.2em;
+	width: 60%;
+	max-width: 600px;
+	background: url(../../../Design/Assets/png/demarrer.png);
+	margin: 1em auto;
+}
+
+@mixin navBtn {
+	border: 1px solid $primary;
+	background: url(../../../Design/Assets/png/1f637.png) center right no-repeat;
+	padding: 0.5em 1.5em 0.5em 1em;
+	background-size: 20%;
+	border-radius: 1em;
+}

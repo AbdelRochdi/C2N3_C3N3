@@ -1,20 +1,47 @@
 @import "variables";
 .header {
+	margin-bottom: 2em;
 	&__nav {
 		background: url(../../../Design/Assets/png/Merged-bar-1.png);
 		display: flex;
-		justify-content: space-evenly;
+		justify-content: space-between;
+		padding: 0.5em;
 		&__links {
+			display: flex;
 			list-style-type: none;
+			align-items: center;
+			li {
+				margin: 0 10px;
+			}
 			a {
 				text-decoration: none;
+				font-weight: 700;
 			}
 			&__advice {
+				color: $neutral1;
+			}
+			&__home {
 				color: $primary;
-            }
-            &__home{
-                
-            }
+			}
+			&__button {
+				color: $neutral4;
+				@include navBtn;
+			}
+		}
+	}
+	&__info {
+		background-color: $secondary;
+		text-align: center;
+		padding: 0.5em;
+		h3 {
+			color: $primary;
+			margin: 0.2em;
+		}
+		p {
+			padding: 0 2.7em;
+			font-weight: 700;
+			line-height: 2.2em;
+			font-size: 0.8em;
 		}
 	}
 }

@@ -1,14 +1,178 @@
-.header__nav {
-  background: url(../../../Design/Assets/png/Merged-bar-1.png);
-  display: flex;
-  justify-content: space-evenly; }
-  .header__nav__links {
-    list-style-type: none; }
-    .header__nav__links a {
-      text-decoration: none; }
-    .header__nav__links__advice {
-      color: #1078AD; }
+.footer {
+  text-align: center;
+  margin-top: 2em; }
+  .footer__links {
+    display: flex;
+    justify-content: space-around;
+    font-size: 0.7em; }
+    .footer__links ul {
+      list-style-type: none;
+      padding: 0; }
+      .footer__links ul li {
+        margin: 0.8em 0; }
+        .footer__links ul li a {
+          text-decoration: none; }
+    .footer__links__contact__utiles {
+      font-weight: 700;
+      color: #1078ad; }
+    .footer__links__contact__number {
+      font-weight: 700;
+      color: #369d53; }
+    .footer__links__nav__button {
+      border: 1px solid #1078ad;
+      background: url(../../../Design/Assets/png/1f637.png) center right no-repeat;
+      padding: 0.5em 1.5em 0.5em 1em;
+      background-size: 20%;
+      border-radius: 1em;
+      color: black; }
+  .footer p {
+    color: #7f7f7f;
+    font-size: 0.8em;
+    padding: 2em;
+    line-height: 1.5em; }
+  .footer .base {
+    background-color: #1078ad;
+    width: 100%;
+    height: 3em; }
+
+.header {
+  margin-bottom: 2em; }
+  .header__nav {
+    background: url(../../../Design/Assets/png/Merged-bar-1.png);
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5em; }
+    .header__nav__links {
+      display: flex;
+      list-style-type: none;
+      align-items: center; }
+      .header__nav__links li {
+        margin: 0 10px; }
+      .header__nav__links a {
+        text-decoration: none;
+        font-weight: 700; }
+      .header__nav__links__advice {
+        color: black; }
+      .header__nav__links__home {
+        color: #1078ad; }
+      .header__nav__links__button {
+        color: white;
+        border: 1px solid #1078ad;
+        background: url(../../../Design/Assets/png/1f637.png) center right no-repeat;
+        padding: 0.5em 1.5em 0.5em 1em;
+        background-size: 20%;
+        border-radius: 1em; }
+  .header__info {
+    background-color: #f4cf1b;
+    text-align: center;
+    padding: 0.5em; }
+    .header__info h3 {
+      color: #1078ad;
+      margin: 0.2em; }
+    .header__info p {
+      padding: 0 2.7em;
+      font-weight: 700;
+      line-height: 2.2em;
+      font-size: 0.8em; }
+
+.test {
+  text-align: center; }
+  .test h3 {
+    font-weight: 700;
+    color: #1078ad;
+    padding: 1em 2em;
+    line-height: 1.5em; }
+  .test p {
+    padding: 1em 2em;
+    color: #7f7f7f;
+    font-size: 0.9em;
+    line-height: 1.5em; }
+  .test button {
+    text-decoration: none;
+    color: white;
+    font-weight: 700;
+    border: 1px solid #1078ad;
+    padding: 0.5em;
+    border-radius: 0.3em;
+    font-size: 1.2em;
+    width: 60%;
+    max-width: 600px;
+    background: url(../../../Design/Assets/png/demarrer.png);
+    margin: 1em auto; }
+
+.symptomes {
+  text-align: center; }
+  .symptomes h3 {
+    color: #1078ad;
+    padding: 1em 6em; }
+  .symptomes__images img {
+    width: 50px;
+    height: 70px; }
+  .symptomes__images .fievre {
+    width: 35px;
+    height: 90px; }
+  .symptomes__images__row {
+    display: flex;
+    justify-content: space-around;
+    margin: 1.5em 0; }
+    .symptomes__images__row div {
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+      justify-content: center;
+      align-items: center;
+      width: 40%; }
+      .symptomes__images__row div span {
+        padding: 1.5em 2em;
+        font-weight: 600; }
+
+.recommendations {
+  text-align: center;
+  background-color: #1078ad; }
+  .recommendations__article {
+    padding: 1.5em; }
+    .recommendations__article h3 {
+      color: #96c5dc; }
+    .recommendations__article p {
+      color: white;
+      font-weight: 600;
+      font-size: 0.8em;
+      line-height: 1.5em; }
+    .recommendations__article h6 {
+      color: #f4cf1b; }
+    .recommendations__article h4 {
+      color: #1078ad;
+      background-color: #f4cf1b;
+      width: 30%;
+      padding: 0.8em;
+      border-radius: 0.2em;
+      margin: 1em auto; }
+    .recommendations__article a {
+      text-decoration: none;
+      color: white;
+      border-bottom: 1px solid #f4cf1b; }
+  .recommendations__CTA {
+    background-color: #96c5dc;
+    padding: 1em;
+    font-size: 0.8em;
+    color: #1078ad; }
+    .recommendations__CTA img {
+      width: 10%; }
+    .recommendations__CTA button {
+      text-decoration: none;
+      color: white;
+      font-weight: 700;
+      border: 1px solid #1078ad;
+      padding: 0.5em;
+      border-radius: 0.3em;
+      font-size: 1.2em;
+      width: 60%;
+      max-width: 600px;
+      background: url(../../../Design/Assets/png/demarrer.png);
+      margin: 1em auto;
+      width: 50%; }
 
 body {
   margin: 0;
-  padding: 0; }
+  padding: 0;
+  font-family: montserrat; }

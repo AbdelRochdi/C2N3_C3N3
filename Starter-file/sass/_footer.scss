@@ -1,0 +1,49 @@
+@import "variables";
+
+.footer {
+	text-align: center;
+	margin-top: 2em;
+
+	&__links {
+		display: flex;
+		justify-content: space-around;
+		font-size: 0.7em;
+		ul {
+			list-style-type: none;
+			padding: 0;
+			li {
+				margin: 0.8em 0;
+				a {
+					text-decoration: none;
+				}
+			}
+		}
+		&__contact {
+			&__utiles {
+				font-weight: 700;
+				color: $primary;
+			}
+			&__number {
+				font-weight: 700;
+				color: $neutral3;
+			}
+		}
+		&__nav {
+			&__button {
+				@include navBtn;
+				color: $neutral1;
+			}
+		}
+	}
+	p {
+		color: $neutral2;
+		font-size: 0.8em;
+		padding: 2em;
+		line-height: 1.5em;
+	}
+	.base {
+		background-color: $primary;
+		width: 100%;
+		height: 3em;
+	}
+}
