@@ -2,6 +2,7 @@
 @import "header";
 @import "sections";
 @import "variables";
+@import "conseil";
 
 body {
 	margin: 0;
@@ -9,4 +10,77 @@ body {
 	font-family: montserrat;
 }
 
+.protection {
+	text-align: center;
+	padding: 2em 0;
+	h4 {
+		color: $primary;
+		padding: 0 4em;
+		line-height: 1.5em;
+	}
+	&__images {
+		
+		&__row {
+			display: flex;
+			justify-content: space-between;
+			margin-left: 2em;
+			&__element {
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				width: 40%;
+				text-align: center;
+				line-height: 1.8em;
+				font-weight: 600;
+				font-size: 0.8em;
+				margin: 1em 0;
+			
+				img {
+					margin-bottom: 1.5em;
+					width: 30%;
+					max-width: 80px;
+					max-height: 100px;
+				}
+			}
+		}
+		
+	}
+	&__element{
+		
+		@extend .protection__images__row__element;
+		width: 80%;
+		margin: 0 auto;
+		img{
+			width: 15%;
+		}
+	}
+}
 
+.informations{
+	text-align: center;
+	background-color: $secondary2;
+	color: $primary;
+	padding: 1em;
+	p{
+		font-weight: 600;
+		font-size: 0.8em;
+	}
+	&__buttons{
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		a{
+			text-decoration: none;
+			color: $neutral4;
+			font-weight: 600;
+			font-size: 0.8em;
+			border-radius: 0.5em;
+			background-color: $primary;
+			padding: 1em;
+			width: 40%;
+			max-width: 300px;
+			margin: 0.5em;
+			
+		}
+	}
+}
