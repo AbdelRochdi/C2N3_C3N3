@@ -225,11 +225,6 @@
       width: 50%;
       max-width: 500px; }
 
-body {
-  margin: 0;
-  padding: 0;
-  font-family: montserrat; }
-
 .protection {
   text-align: center;
   padding: 2em 0; }
@@ -336,3 +331,8 @@ body {
         width: 60px;
         height: 60px;
         margin-bottom: 1em; }
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: montserrat; }
