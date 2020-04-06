@@ -26,6 +26,8 @@
     .footer__links__contact__number {
       font-weight: 700;
       color: #369d53; }
+    .footer__links__contact__allo {
+      line-height: 2em; }
     .footer__links__nav__button {
       border: 1px solid #1078ad;
       background: url(../../../Design/Assets/png/language.png) center right no-repeat;
