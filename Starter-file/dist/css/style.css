@@ -204,15 +204,16 @@
       border-bottom: 1px solid #f4cf1b; }
   .recommendations__CTA {
     background-color: #96c5dc;
-    padding: 1em;
+    padding: 2em 1em;
     font-size: 0.8em;
     color: #1078ad; }
     .recommendations__CTA img {
-      width: 10%; }
+      width: 10%;
+      margin-bottom: 1em; }
       @media screen and (min-width: 1200px) {
         .recommendations__CTA img {
           width: 5%; } }
-    .recommendations__CTA button {
+    .recommendations__CTA a {
       text-decoration: none;
       color: white;
       font-weight: 700;
@@ -225,7 +226,9 @@
       background: url(../../../Design/Assets/png/demarrer.png);
       margin: 1em auto;
       width: 50%;
-      max-width: 500px; }
+      max-width: 700px;
+      margin: 2em 0;
+      padding: 0.5em 3em; }
 
 .protection {
   text-align: center;
@@ -333,6 +336,150 @@
         width: 60px;
         height: 60px;
         margin-bottom: 1em; }
+
+.tribar {
+  width: 60%;
+  height: 0.4em;
+  margin: 0 auto;
+  border-radius: 1em;
+  background-color: #0d5e88;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 4em;
+  margin-top: 2.5rem; }
+  .tribar div {
+    border-radius: 50%;
+    background-color: #1078ad;
+    width: 0.8em;
+    height: 0.8em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    overflow: visible; }
+    .tribar div span {
+      margin-top: 4em;
+      font-size: 0.8rem; }
+    .tribar div .circle {
+      background-color: #f4cf1b;
+      width: 2em;
+      height: 2em;
+      z-index: -1;
+      position: absolute; }
+
+.preambule {
+  background-color: #96c5dc;
+  text-align: center;
+  padding: 0.5em 1em;
+  width: 70%;
+  margin: 0 auto;
+  border-radius: 1em; }
+  .preambule h1 {
+    color: #1078ad;
+    font-size: 1.3rem; }
+  .preambule hr {
+    width: 60%;
+    border-color: #f4cf1b; }
+  .preambule__top {
+    padding: 0 2em 1em;
+    font-weight: 700;
+    line-height: 1.6em;
+    font-size: 0.8em; }
+  .preambule__bottom {
+    font-weight: 700;
+    line-height: 1.6em;
+    font-size: 0.8em;
+    padding: 1em 2em 2em; }
+
+.launch {
+  text-align: center;
+  margin-top: 1em; }
+  .launch__button {
+    text-decoration: none;
+    color: white;
+    font-weight: 700;
+    border: 1px solid #1078ad;
+    padding: 0.5em;
+    border-radius: 0.3em;
+    font-size: 1.2em;
+    width: 60%;
+    max-width: 600px;
+    background: url(../../../Design/Assets/png/demarrer.png);
+    margin: 1em auto;
+    width: 50%;
+    max-width: 500px;
+    cursor: pointer; }
+
+.progress {
+  display: flex;
+  justify-content: center;
+  display: none; }
+  .progress__bar {
+    width: 80%;
+    border-radius: 1em;
+    border: 1px solid #1078ad;
+    margin: 0 0.5em;
+    background-color: #e3eff6; }
+    .progress__bar__fill {
+      background-color: #1078ad;
+      width: 0%;
+      height: 100%;
+      border-radius: 1em; }
+
+.questions {
+  padding: 1.5em 2em;
+  display: none; }
+  .questions h3 {
+    color: #7f7f7f;
+    margin-bottom: 3em; }
+  .questions__form {
+    text-align: right; }
+    .questions__form input {
+      margin: 0.8em 0;
+      background-color: white; }
+
+.anti {
+  text-align: center;
+  background-color: #f4cf1b;
+  padding: 0.5em 2em;
+  margin-top: 1em;
+  display: none; }
+  .anti__text {
+    line-height: 1.8em;
+    font-size: 1rem;
+    padding: 0 2em; }
+
+.buttons {
+  display: flex;
+  justify-content: space-around; }
+  .buttons__previous {
+    display: none; }
+  .buttons button {
+    text-decoration: none;
+    color: white;
+    font-weight: 700;
+    border: 1px solid #1078ad;
+    padding: 0.5em;
+    border-radius: 0.3em;
+    font-size: 1.2em;
+    width: 60%;
+    max-width: 600px;
+    background: url(../../../Design/Assets/png/demarrer.png);
+    margin: 1em auto;
+    width: 40%;
+    margin-top: 3em;
+    font-size: 0.9em;
+    cursor: pointer; }
+
+.invisible {
+  display: none; }
+
+.visible {
+  display: block; }
+
+.flex {
+  display: flex; }
 
 body {
   margin: 0;
