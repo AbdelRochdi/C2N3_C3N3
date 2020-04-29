@@ -218,6 +218,11 @@ const next = document.querySelector('.buttons__next');
 const questionText = document.querySelector('.questions__text');
 const form = document.querySelector('.questions__form');
 const answer = document.getElementsByName('choice');
+const circles = document.querySelectorAll('.circle');
+
+console.log(circles);
+
+circles[0].style.display = 'block';
 
 let counter = 0;
 let values = [];
@@ -231,6 +236,9 @@ launch.addEventListener('click', () => {
 	progress.classList.add('flex');
 	counter += 1;
 	renderQuestions(counter);
+	addProgress(counter);
+	circles[0].style.display = 'none';
+	circles[1].style.display = 'block';
 });
 
 //returning to the previous question and deleting the last value
@@ -246,6 +254,7 @@ previous.addEventListener('click', () => {
 	console.log(values);
 
 	renderQuestions(counter);
+	addProgress(counter);
 });
 
 //going to next question and adding a value
@@ -254,37 +263,47 @@ next.addEventListener('click', () => {
 	const detail = document.querySelector('#numerique');
 
 	if (form.children[1].id === 'numerique') {
+		if (detail.value === '' ) {
+			return;
+		}else{
 		values.push(detail.value);
 		console.log(detail.value);
-		
+		counter += 1;
+		}
 	} else {
 		for (i = 0; i < answer.length; i++) {
 			if (answer[i].checked) {
 				values.push(answer[i].value);
-				
+				counter += 1;
 			}
 		}
 	}
 
 	console.log(values);
 
-	counter += 1;
+	
 	if (counter > 1) {
 		previous.classList.add('visible');
 	}
 
 	renderQuestions(counter);
+	addProgress(counter);
 	
 });
 
 //rendering questions and inputs in the UI from their objects
 
-function renderQuestions(counteer) {
+function renderQuestions(step) {
 	
 	let currentQuestion = questionsList.find((ques) => {
-		return ques.number == counteer;
+		return ques.number == step;
 	});
 
 	questionText.textContent = currentQuestion.text;
 	form.innerHTML = currentQuestion.choices;
+}
+
+function addProgress(valeur) {
+	progress.firstElementChild.firstElementChild.style.width = `${(100/22)*valeur}%`
+	progress.lastElementChild.textContent = `${valeur}/22`
 }

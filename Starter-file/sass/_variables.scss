@@ -33,3 +33,15 @@ $neutral4: white;
 		@content;
 	}
 }
+
+@mixin triCircles {
+	border-radius: 50%;
+		background-color: $primary;
+		width: 0.8em;
+		height: 0.8em;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+		overflow: visible;
+}

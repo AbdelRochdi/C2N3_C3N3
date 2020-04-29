@@ -348,7 +348,7 @@
   align-items: center;
   margin-bottom: 4em;
   margin-top: 2.5rem; }
-  .tribar div {
+  .tribar__informations, .tribar__questionnaire, .tribar__resultat {
     border-radius: 50%;
     background-color: #1078ad;
     width: 0.8em;
@@ -356,17 +356,24 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
-    overflow: visible; }
-    .tribar div span {
+    flex-direction: column; }
+    .tribar__informations span, .tribar__questionnaire span, .tribar__resultat span {
       margin-top: 4em;
       font-size: 0.8rem; }
-    .tribar div .circle {
-      background-color: #f4cf1b;
+    .tribar__informations .circle, .tribar__questionnaire .circle, .tribar__resultat .circle {
+      background-color: #1078ad;
       width: 2em;
       height: 2em;
-      z-index: -1;
-      position: absolute; }
+      z-index: 0;
+      position: absolute;
+      display: none;
+      border-radius: 50%; }
+      .tribar__informations .circle .mini-circle, .tribar__questionnaire .circle .mini-circle, .tribar__resultat .circle .mini-circle {
+        border-radius: 50%;
+        background-color: #f4cf1b;
+        width: 0.8em;
+        height: 0.8em;
+        margin: 0.6em; }
 
 .preambule {
   background-color: #96c5dc;

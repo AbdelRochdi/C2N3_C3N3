@@ -11,7 +11,9 @@
 	align-items: center;
 	margin-bottom: 4em;
 	margin-top: 2.5rem;
-	div {
+	&__informations,
+	&__questionnaire,
+	&__resultat {
 		border-radius: 50%;
 		background-color: $primary;
 		width: 0.8em;
@@ -20,17 +22,25 @@
 		justify-content: center;
 		align-items: center;
 		flex-direction: column;
-		overflow: visible;
 		span {
 			margin-top: 4em;
 			font-size: 0.8rem;
 		}
 		.circle {
-			background-color: $secondary;
+			background-color: $primary;
 			width: 2em;
 			height: 2em;
-			z-index: -1;
+			z-index: 0;
 			position: absolute;
+			display: none;
+			border-radius: 50%;
+			.mini-circle {
+				border-radius: 50%;
+				background-color: $secondary;
+				width: 0.8em;
+				height: 0.8em;
+				margin: 0.6em;
+			}
 		}
 	}
 }
