@@ -488,6 +488,17 @@
 .flex {
   display: flex; }
 
+.flex-radio {
+  display: flex;
+  justify-content: space-evenly; }
+  .flex-radio .mini {
+    display: flex;
+    width: 400px;
+    justify-content: flex-end;
+    align-items: center; }
+    .flex-radio .mini input {
+      margin: 1em 20%; }
+
 body {
   margin: 0;
   padding: 0;

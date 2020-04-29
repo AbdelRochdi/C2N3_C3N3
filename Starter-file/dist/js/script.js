@@ -1,6 +1,6 @@
 const questionsList = [
 	{
-		text: 'Pensez-vous avoir ou avoir eu de la fièvre ces derniers jours (frissons, sueurs) ?',
+		text: 'Pensez-vous avoir eu de la fièvre ces derniers jours (frissons, sueurs) ?',
 		choices: `<label for="oui">Oui</label>
         <input type="radio" value="oui" id="oui" name="choice"><br>
         <label for="non">Non</label>
@@ -9,14 +9,14 @@ const questionsList = [
 		value: 10
 	},
 	{
-		text: 'Ces dernières 48 heures, quelle a été votre température la plus élevée ?',
+		text: 'quelle est votre température ?',
 		choices: `<label for="numerique">degrée</label>
         <input type="number" id="numerique">`,
 		number: 2,
 		value: 10
 	},
 	{
-		text: 'Ces derniers jours, avez-vous une toux ou une augmentation de votre toux habituelle ?',
+		text: 'Avez-vous une toux ou une augmentation de votre toux habituelle ces derniers jours ?',
 		choices: `<label for="oui">Oui</label>
         <input type="radio" value="oui" id="oui" name="choice"><br>
         <label for="non">Non</label>
@@ -25,7 +25,7 @@ const questionsList = [
 		value: 10
 	},
 	{
-		text: 'Ces derniers jours, avez-vous noté une forte diminution ou perte de votre goût ou de votre odorat ?',
+		text: 'Avez-vous des douleurs musculaires ou des courbatures inhabituelles ces derniers jours ? ',
 		choices: `<label for="oui">Oui</label>
         <input type="radio" value="oui" id="oui" name="choice"><br>
         <label for="non">Non</label>
@@ -34,8 +34,7 @@ const questionsList = [
 		value: 10
 	},
 	{
-		text:
-			'Ces derniers jours, avez-vous eu un mal de gorge et/ou des douleurs musculaires et/ou des courbatures inhabituelles ?',
+		text: 'Avez-vous un mal de gorge apparu ces derniers jours ? ',
 		choices: `<label for="oui">Oui</label>
         <input type="radio" value="oui" id="oui" name="choice"><br>
         <label for="non">Non</label>
@@ -44,7 +43,7 @@ const questionsList = [
 		value: 10
 	},
 	{
-		text: 'Ces dernières 24 heures, avez-vous de la diarrhée ? Avec au moins 3 selles molles.',
+		text: 'Avez-vous de la diarrhée ces dernières 24 heures (au moins 3 selles molles) ?',
 		choices: `<label for="oui">Oui</label>
         <input type="radio" value="oui" id="oui" name="choice"><br>
         <label for="non">Non</label>
@@ -53,7 +52,7 @@ const questionsList = [
 		value: 10
 	},
 	{
-		text: 'Ces derniers jours, avez-vous une fatigue inhabituelle ?',
+		text: 'Avez-vous une fatigue inhabituelle ces derniers jours ?',
 		choices: `<label for="oui">Oui</label>
         <input type="radio" value="oui" id="oui" name="choice"><br>
         <label for="non">Non</label>
@@ -71,7 +70,7 @@ const questionsList = [
 		value: 10
 	},
 	{
-		text: "Depuis 24 heures ou plus, êtes-vous dans l'impossibilité de vous alimenter ou de boire ?",
+		text: 'Avez-vous des difficultés importantes pour vous alimenter ou boire depuis plus de 24h ? ',
 		choices: `<label for="oui">Oui</label>
         <input type="radio" value="oui" id="oui" name="choice"><br>
         <label for="non">Non</label>
@@ -81,7 +80,7 @@ const questionsList = [
 	},
 	{
 		text:
-			'Ces dernières 24 heures, avez-vous noté un manque de souffle inhabituel lorsque vous parlez ou faites un petit effort ?',
+			'Avez-vous vu apparaître une gêne respiratoire ou une augmentation de votre gêne respiratoire habituelle ? ',
 		choices: `<label for="oui">Oui</label>
         <input type="radio" value="oui" id="oui" name="choice"><br>
         <label for="non">Non</label>
@@ -90,11 +89,36 @@ const questionsList = [
 		value: 10
 	},
 	{
+		text: 'Comment vous sentez-vous ? ',
+		choices: `<div class="flex-radio">
+		<div class="mini">
+		<label for="fatigue">Fatigué</label>
+		<input type="radio" value="fatigue" id="fatigue" name="choice"><br>
+		</div>
+		<div class="mini">
+		<label for="bien">Bien</label>
+		<input type="radio" id="bien" value="bien" name="choice"><br>
+		</div>
+	</div>
+	<div class="flex-radio">
+		<div class="mini">
+		<label for="trop-fatigue">Trop fatigué</label>
+		<input type="radio" value="trop-fatigue" id="trop-fatigue" name="choice"><br>
+	</div>
+		<div class="mini">
+		<label for="moyen">Moyen</label>
+		<input type="radio" id="moyen" value="moyen" name="choice"><br>
+	</div>
+	</div>`,
+		number: 11,
+		value: 10
+	},
+	{
 		text: `Quel est votre âge ? 
         Ceci, afin de calculer un facteur de risque spécifique.`,
 		choices: `<label for="numerique">ans</label>
         <input type="number" id="numerique" name="choice">`,
-		number: 11,
+		number: 12,
 		value: 10
 	},
 	{
@@ -102,7 +126,7 @@ const questionsList = [
         Afin de calculer l’indice de masse corporelle qui est un facteur influençant le risque de complications de l’infection.`,
 		choices: `<label for="numerique">cm</label>
         <input type="number" id="numerique" name="choice">`,
-		number: 12,
+		number: 13,
 		value: 10
 	},
 	{
@@ -110,20 +134,18 @@ const questionsList = [
         Afin de calculer l’indice de masse corporelle qui est un facteur influençant le risque de complications de l’infection.`,
 		choices: `<label for="numerique">kg</label>
         <input type="number" id="numerique" name="choice">`,
-		number: 13,
+		number: 14,
 		value: 10
 	},
 	{
-		text: `Avez-vous de l’hypertension artérielle mal équilibrée ?
-        Ou avez-vous une maladie cardiaque ou vasculaire ?
-        Ou prenez vous un traitement à visée cardiologique ?`,
+		text: `Avez-vous de l’hypertension artérielle ? Ou avez-vous une maladie cardiaque ou vasculaire ? Ou prenez-vous un traitement à visée cardiologique ?`,
 		choices: `<label for="oui">Oui</label>
         <input type="radio" value="oui" id="oui" name="choice"><br>
         <label for="non">Non</label>
         <input type="radio" id="non" value="non" name="choice"><br>
         <label for="sspas">Ne sait pas</label>
-        <input type="radio" id="sspas" value="sspas" name="choice" >`,
-		number: 14,
+        <input type="radio" id="sspas" value="oui" name="choice" >`,
+		number: 15,
 		value: 10
 	},
 	{
@@ -132,21 +154,11 @@ const questionsList = [
         <input type="radio" value="oui" id="oui" name="choice"><br>
         <label for="non">Non</label>
         <input type="radio" id="non" value="non" name="choice"><br>`,
-		number: 15,
-		value: 10
-	},
-	{
-		text: `Avez-vous ou avez-vous eu un cancer ces trois dernières années ?`,
-		choices: `<label for="oui">Oui</label>
-        <input type="radio" value="oui" id="oui" name="choice"><br>
-        <label for="non">Non</label>
-        <input type="radio" id="non" value="non" name="choice"><br>`,
 		number: 16,
 		value: 10
 	},
 	{
-		text: `Avez-vous une maladie respiratoire ?
-        Ou êtes-vous suivi par un pneumologue ?`,
+		text: `Avez-vous ou avez-vous eu un cancer ?`,
 		choices: `<label for="oui">Oui</label>
         <input type="radio" value="oui" id="oui" name="choice"><br>
         <label for="non">Non</label>
@@ -155,7 +167,8 @@ const questionsList = [
 		value: 10
 	},
 	{
-		text: `Avez-vous une insuffisance rénale chronique dialysée ?`,
+		text: `Avez-vous une maladie respiratoire ? Ou êtes-vous suivi par un pneumologue ? ?
+        Ou êtes-vous suivi par un pneumologue ?`,
 		choices: `<label for="oui">Oui</label>
         <input type="radio" value="oui" id="oui" name="choice"><br>
         <label for="non">Non</label>
@@ -164,12 +177,21 @@ const questionsList = [
 		value: 10
 	},
 	{
-		text: `Avez-vous une maladie chronique du foie ?`,
+		text: `Avez-vous une insuffisance rénale chronique dialysée ?`,
 		choices: `<label for="oui">Oui</label>
         <input type="radio" value="oui" id="oui" name="choice"><br>
         <label for="non">Non</label>
         <input type="radio" id="non" value="non" name="choice"><br>`,
 		number: 19,
+		value: 10
+	},
+	{
+		text: `Avez-vous une maladie chronique du foie ?`,
+		choices: `<label for="oui">Oui</label>
+        <input type="radio" value="oui" id="oui" name="choice"><br>
+        <label for="non">Non</label>
+        <input type="radio" id="non" value="non" name="choice"><br>`,
+		number: 20,
 		value: 10
 	},
 	{
@@ -179,8 +201,8 @@ const questionsList = [
         <label for="non">Non</label>
         <input type="radio" id="non" value="non" name="choice"><br>
         <label for="sspas">Non applicable</label>
-        <input type="radio" id="sspas" value="sspas" name="choice" >`,
-		number: 20,
+        <input type="radio" id="sspas" value="non" name="choice" >`,
+		number: 21,
 		value: 10
 	},
 	{
@@ -190,8 +212,8 @@ const questionsList = [
         <label for="non">Non</label>
         <input type="radio" id="non" value="non" name="choice"><br>
         <label for="sspas">Ne sait pas</label>
-        <input type="radio" id="sspas" value="sspas" name="choice" >`,
-		number: 21,
+        <input type="radio" id="sspas" value="non" name="choice" >`,
+		number: 22,
 		value: 10
 	},
 	{
@@ -203,8 +225,8 @@ const questionsList = [
         <label for="non">Non</label>
         <input type="radio" id="non" value="non" name="choice"><br>
         <label for="sspas">Ne sait pas</label>
-        <input type="radio" id="sspas" value="sspas" name="choice">`,
-		number: 22,
+        <input type="radio" id="sspas" value="non" name="choice">`,
+		number: 23,
 		value: 10
 	}
 ];
@@ -263,53 +285,60 @@ next.addEventListener('click', () => {
 	const detail = document.querySelector('#numerique');
 
 	if (form.children[1].id === 'numerique') {
-		if (detail.value === '' ) {
-			alert('please enter valid infos')
+		if (detail.value === '') {
+			alert('please enter valid infos');
 			return;
-		}else if(counter === 2 && (detail.value < 34 || detail.value > 42)){
-			alert('la temperature doit etre comprise entre 34 et 42')
-			return
-		}else if(counter === 11 && (detail.value > 110) ){
-			alert("l'age doit etre inferieure a 110")
-			return
-		}else if(counter === 12 && (detail.value < 80 || detail.value > 250 )){
-			alert('la taille doit etre comprise entre 80 et 250')
-			return
-		}else if(counter === 13 && (detail.value < 20 || detail.value > 250)){
-			alert('le poids doit etre compris entre 20 et 250')
-			return
-		}else{
-		values.push(detail.value);
-		console.log(detail.value);
-		counter += 1;
+		} else if (counter === 2 && (detail.value < 34 || detail.value > 42)) {
+			alert('la temperature doit etre comprise entre 34 et 42');
+			return;
+		} else if (counter === 12 && detail.value > 110) {
+			alert("l'age doit etre inferieure a 110");
+			return;
+		} else if (counter === 13 && (detail.value < 80 || detail.value > 250)) {
+			alert('la taille doit etre comprise entre 80 et 250');
+			return;
+		} else if (counter === 14 && (detail.value < 20 || detail.value > 250)) {
+			alert('le poids doit etre compris entre 20 et 250');
+			return;
+		} else {
+			values.push(detail.value);
+			console.log(detail.value);
+			counter += 1;
 		}
 	} else {
 		for (i = 0; i < answer.length; i++) {
 			if (answer[i].checked) {
-				values.push(answer[i].value);
-				counter += 1;
+				if (counter === 1 && answer[i].value === 'non') {
+					values.push(answer[i].value);
+					values.push('passed');
+					counter += 2;
+				} else if (counter === 7 && answer[i].value === 'non') {
+					values.push(answer[i].value);
+					values.push('passed');
+					counter += 2;
+				} else {
+					values.push(answer[i].value);
+					counter += 1;
+				}
 			}
 		}
 	}
 
-	
-
 	console.log(values);
 
-	
 	if (counter > 1) {
 		previous.classList.add('visible');
 	}
 
 	renderQuestions(counter);
 	addProgress(counter);
-	
+
+	getResult(values, counter);
 });
 
 //rendering questions and inputs in the UI from their objects
 
 function renderQuestions(step) {
-	
 	let currentQuestion = questionsList.find((ques) => {
 		return ques.number == step;
 	});
@@ -319,6 +348,169 @@ function renderQuestions(step) {
 }
 
 function addProgress(valeur) {
-	progress.firstElementChild.firstElementChild.style.width = `${(100/22)*valeur}%`
-	progress.lastElementChild.textContent = `${valeur}/22`
+	progress.firstElementChild.firstElementChild.style.width = `${100 / 22 * valeur}%`;
+	progress.lastElementChild.textContent = `${valeur}/22`;
+}
+
+//function that gets the result of the test
+
+function getResult(list, counter) {
+	let pro = list.slice(11);
+
+	//symptomes positive
+
+	let fievre = list[0] === 'oui';
+	let toux = list[2] === 'oui';
+	let malGorge = list[4] === 'oui';
+	let courbatures = list[3] === 'oui';
+	let diarrhee = list[5] === 'oui';
+
+	//symptomes negatives
+
+	let noFievre = list[0] === 'non';
+	let noToux = list[2] === 'non';
+	let noMalGorge = list[4] === 'non';
+	let noCourbatures = list[3] === 'non';
+	let noDiarrhee = list[5] === 'non';
+
+	//facteurs pronostiques
+
+	let facPro = pro.includes('oui');
+	let noFacPro = !pro.includes('oui');
+
+	//gravité mineures positives
+
+	let hauteFievre = list[1] > 39;
+	let fatigue = list[6] === 'oui';
+	let malaise = list[10] === 'fatigue' || list[10] === 'trop-fatigue';
+
+	//gravité mineures négatives
+
+	let noHauteFievre = list[1] < 39;
+	let noFatigue = list[6] === 'non';
+	let noMalaise = list[10] === 'bien' || list[10] === 'moyen';
+
+	// gravité majeures positives
+
+	let basseFievre = list[1] < 35.4;
+	let gene = list[9] === 'oui';
+	let diffAlim = list[8] === 'oui';
+
+	// gravité majeures négatives
+
+	let noBasseFievre = list[1] > 35.4;
+	let noGene = list[9] === 'non';
+	let noDiffAlim = list[8] === 'non';
+
+	// paramétres
+
+	let age = list[11];
+
+	if (counter === 23) {
+		if (
+			(fievre && malGorge) ||
+			(fievre && courbatures) ||
+			(toux && malGorge) ||
+			(toux && courbatures) ||
+			(fievre && diarrhee)
+		) {
+			if (
+				age < 50 &&
+				noFacPro &&
+				noHauteFievre &&
+				noFatigue &&
+				noMalaise &&
+				noGene &&
+				noDiffAlim &&
+				noBasseFievre
+			) {
+				alert(
+					'nous vous conseillons de rester à votre domicile et de contacter votre médecin en cas d’apparition de nouveaux symptômes. Vous pourrez aussi utiliser à nouveau l’application pour réévaluer vos symptômes'
+				);
+			} else if (
+				age > 50 &&
+				age <= 69 &&
+				((noFacPro && noHauteFievre && noFatigue && noMalaise && noGene && noDiffAlim && noBasseFievre) ||
+					(noFacPro && noBasseFievre && noGene && noDiffAlim && (hauteFievre || fatigue || malaise)))
+			) {
+				alert('téléconsultation ou médecin généraliste ou visite à domicile ');
+				alert(
+					'appelez le 141 si une gêne respiratoire ou des difficultés importantes pour s’alimenter ou boire pendant plus de 24h apparaissent'
+				);
+			} else if (facPro && noHauteFievre && noFatigue && noMalaise && noGene && noDiffAlim && noBasseFievre) {
+				alert('téléconsultation ou médecin généraliste ou visite à domicile ');
+				alert(
+					'appelez le 141 si une gêne respiratoire ou des difficultés importantes pour s’alimenter ou boire pendant plus de 24h apparaissent'
+				);
+			} else if (FacPro && noGene && noDiffAlim && noBasseFievre && (hauteFievre || fatigue || malaise)) {
+				alert('téléconsultation ou médecin généraliste ou visite à domicile ');
+				alert(
+					'appelez le 141 si une gêne respiratoire ou des difficultés importantes pour s’alimenter ou boire pendant plus de 24h apparaissent'
+				);
+			} else if (
+				FacPro &&
+				noGene &&
+				noDiffAlim &&
+				noBasseFievre &&
+				((hauteFievre && fatigue && malaise) ||
+					(hauteFievre && fatigue) ||
+					(fatigue && malaise) ||
+					(hauteFievre && malaise))
+			) {
+				alert('veuillez appeler le numéro 141');
+			} else if (basseFievre || gene || diffAlim) {
+				alert('veuillez appeler le numéro 141');
+			}
+		}
+
+		if (fievre && toux) {
+			if (
+				(noFacPro && noHauteFievre && noFatigue && noMalaise && noGene && noDiffAlim && noBasseFievre) ||
+				(noFacPro && noBasseFievre && noGene && noDiffAlim && (hauteFievre || fatigue || malaise))
+			) {
+				alert('téléconsultation ou médecin généraliste ou visite à domicile ');
+			} else if (facPro && noHauteFievre && noFatigue && noMalaise && noGene && noDiffAlim && noBasseFievre) {
+				alert('téléconsultation ou médecin généraliste ou visite à domicile ');
+				alert(
+					'appelez le 141 si une gêne respiratoire ou des difficultés importantes pour s’alimenter ou boire pendant plus de 24h apparaissent'
+				);
+			} else if (FacPro && noGene && noDiffAlim && noBasseFievre && (hauteFievre || fatigue || malaise)) {
+				alert('téléconsultation ou médecin généraliste ou visite à domicile ');
+				alert(
+					'appelez le 141 si une gêne respiratoire ou des difficultés importantes pour s’alimenter ou boire pendant plus de 24h apparaissent'
+				);
+			} else if (
+				FacPro &&
+				noGene &&
+				noDiffAlim &&
+				noBasseFievre &&
+				((hauteFievre && fatigue && malaise) ||
+					(hauteFievre && fatigue) ||
+					(fatigue && malaise) ||
+					(hauteFievre && malaise))
+			) {
+				alert('veuillez appeler le numéro 141');
+			} else if (basseFievre || gene || diffAlim) {
+				alert('veuillez appeler le numéro 141');
+			}
+		}
+
+		if (fievre || toux || malGorge || courbatures) {
+			if (noHauteFievre && noFatigue && noMalaise && noGene && noDiffAlim && noBasseFievre) {
+				alert(
+					'Votre situation ne relève probablement pas du Covid-19. Consultez votre médecin au moindre doute.'
+				);
+			} else if (facPro || hauteFievre || fatigue || malaise || gene || diffAlim || basseFievre) {
+				alert(
+					'Votre situation ne relève probablement pas du Covid-19. Un avis médical est recommandé. Au moindre doute, appelez le 141. '
+				);
+			}
+		}
+
+		if (!list.includes('oui') && noMalaise) {
+			alert(
+				'Votre situation ne relève probablement pas du Covid-19. N’hésitez pas à contacter votre médecin en cas de doute. Vous pouvez refaire le test en cas de nouveau symptôme pour réévaluer la   situation.   Pour   toute information concernant   le   Covid-19 allez vers la page d’accueil.'
+			);
+		}
+	}
 }

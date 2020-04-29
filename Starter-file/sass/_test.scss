@@ -160,3 +160,18 @@
 .flex {
 	display: flex;
 }
+
+.flex-radio{
+	display: flex;
+	justify-content: space-evenly;
+	.mini{
+		display: flex;
+		width: 400px;
+		justify-content: flex-end;
+		align-items: center;
+		input{
+			margin: 1em 20%;
+		}
+	}
+	
+}
