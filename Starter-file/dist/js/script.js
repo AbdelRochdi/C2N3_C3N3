@@ -11,7 +11,7 @@ const questionsList = [
 	{
 		text: 'Ces dernières 48 heures, quelle a été votre température la plus élevée ?',
 		choices: `<label for="numerique">degrée</label>
-        <input type="text" id="numerique">`,
+        <input type="number" id="numerique">`,
 		number: 2,
 		value: 10
 	},
@@ -93,7 +93,7 @@ const questionsList = [
 		text: `Quel est votre âge ? 
         Ceci, afin de calculer un facteur de risque spécifique.`,
 		choices: `<label for="numerique">ans</label>
-        <input type="text" id="numerique" name="choice">`,
+        <input type="number" id="numerique" name="choice">`,
 		number: 11,
 		value: 10
 	},
@@ -101,7 +101,7 @@ const questionsList = [
 		text: `Quel est votre taille ? 
         Afin de calculer l’indice de masse corporelle qui est un facteur influençant le risque de complications de l’infection.`,
 		choices: `<label for="numerique">cm</label>
-        <input type="text" id="numerique" name="choice">`,
+        <input type="number" id="numerique" name="choice">`,
 		number: 12,
 		value: 10
 	},
@@ -109,7 +109,7 @@ const questionsList = [
 		text: `Quel est votre poids ?
         Afin de calculer l’indice de masse corporelle qui est un facteur influençant le risque de complications de l’infection.`,
 		choices: `<label for="numerique">kg</label>
-        <input type="text" id="numerique" name="choice">`,
+        <input type="number" id="numerique" name="choice">`,
 		number: 13,
 		value: 10
 	},
@@ -264,7 +264,20 @@ next.addEventListener('click', () => {
 
 	if (form.children[1].id === 'numerique') {
 		if (detail.value === '' ) {
+			alert('please enter valid infos')
 			return;
+		}else if(counter === 2 && (detail.value < 34 || detail.value > 42)){
+			alert('la temperature doit etre comprise entre 34 et 42')
+			return
+		}else if(counter === 11 && (detail.value > 110) ){
+			alert("l'age doit etre inferieure a 110")
+			return
+		}else if(counter === 12 && (detail.value < 80 || detail.value > 250 )){
+			alert('la taille doit etre comprise entre 80 et 250')
+			return
+		}else if(counter === 13 && (detail.value < 20 || detail.value > 250)){
+			alert('le poids doit etre compris entre 20 et 250')
+			return
 		}else{
 		values.push(detail.value);
 		console.log(detail.value);
@@ -278,6 +291,8 @@ next.addEventListener('click', () => {
 			}
 		}
 	}
+
+	
 
 	console.log(values);
 
