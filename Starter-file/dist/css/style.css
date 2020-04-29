@@ -117,7 +117,7 @@
     color: #7f7f7f;
     font-size: 0.9em;
     line-height: 1.5em; }
-  .test button {
+  .test a {
     text-decoration: none;
     color: white;
     font-weight: 700;
@@ -128,7 +128,8 @@
     width: 60%;
     max-width: 600px;
     background: url(../../../Design/Assets/png/demarrer.png);
-    margin: 1em auto; }
+    margin: 1em auto;
+    padding: 0.5em 4em; }
 
 .symptomes {
   text-align: center; }
@@ -498,6 +499,38 @@
     align-items: center; }
     .flex-radio .mini input {
       margin: 1em 20%; }
+
+.resultat {
+  text-align: center;
+  width: 40%;
+  margin: 0 auto;
+  display: none; }
+  .resultat h4 {
+    color: #369d53; }
+  .resultat__block {
+    background-color: #1078ad;
+    padding: 1em;
+    border-radius: 1em; }
+    .resultat__block h2 {
+      color: white; }
+    .resultat__block p {
+      color: #f4cf1b;
+      line-height: 1.5em; }
+  .resultat__reprendre {
+    text-decoration: none;
+    color: white;
+    font-weight: 700;
+    border: 1px solid #1078ad;
+    padding: 0.5em;
+    border-radius: 0.3em;
+    font-size: 1.2em;
+    width: 60%;
+    max-width: 600px;
+    background: url(../../../Design/Assets/png/demarrer.png);
+    margin: 1em auto;
+    width: 50%;
+    max-width: 500px;
+    cursor: pointer; }
 
 body {
   margin: 0;

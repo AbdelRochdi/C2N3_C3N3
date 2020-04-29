@@ -140,6 +140,7 @@
 	&__previous {
 		display: none;
 	}
+	
 	button {
 		@include btn;
 		width: 40%;
@@ -147,6 +148,7 @@
 		font-size: 0.9em;
 		cursor: pointer;
 	}
+	
 }
 
 .invisible {
@@ -174,4 +176,33 @@
 		}
 	}
 	
+}
+
+
+.resultat{
+	text-align: center;
+	width: 40%;
+	margin: 0 auto;
+	display: none;
+	h4{
+		color: $neutral3;
+	}
+	&__block{
+		background-color: $primary;
+		padding: 1em;
+		border-radius: 1em;
+		h2{
+			color: $neutral4;
+		}
+		p{
+			color: $secondary;
+			line-height: 1.5em;
+		}
+	}
+	&__reprendre{
+		@include btn;
+		width: 50%;
+		max-width: 500px;
+		cursor: pointer;
+	}
 }

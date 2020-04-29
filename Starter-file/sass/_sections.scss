@@ -28,8 +28,9 @@
 		font-size: 0.9em;
 		line-height: 1.5em;
 	}
-	button {
+	a {
 		@include btn;
+		padding: 0.5em 4em;
 	}
 }
 
