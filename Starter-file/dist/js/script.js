@@ -271,6 +271,7 @@ reprendre.addEventListener('click', () => {
 	circles[2].style.display = 'none';
 	circles[1].style.display = 'block';
 	resultat.style.display = 'none';
+	next.textContent = 'Question suivante';
 
 	questions.classList.add('visible');
 	progress.classList.add('flex');
@@ -288,7 +289,12 @@ previous.addEventListener('click', () => {
 		previous.classList.remove('visible');
 	}
 
+	if (counter < 23) {
+		next.textContent = 'Question suivante';
+	}
+
 	values.pop();
+
 	console.log(values);
 
 	renderQuestions(counter);
@@ -340,9 +346,10 @@ next.addEventListener('click', () => {
 		}
 	}
 
+	console.log(counter);
 	console.log(values);
 
-	if (counter === 22) {
+	if (counter === 23) {
 		next.textContent = 'Enregistrer et continuer';
 	}
 	if (counter > 1) {
@@ -358,17 +365,19 @@ next.addEventListener('click', () => {
 //rendering questions and inputs in the UI from their objects
 
 function renderQuestions(step) {
+	if (step < 24) {
 	let currentQuestion = questionsList.find((ques) => {
 		return ques.number == step;
 	});
 
 	questionText.textContent = currentQuestion.text;
 	form.innerHTML = currentQuestion.choices;
+	}
 }
 
 function addProgress(valeur) {
-	progress.firstElementChild.firstElementChild.style.width = `${100 / 22 * valeur}%`;
-	progress.lastElementChild.textContent = `${valeur}/22`;
+	progress.firstElementChild.firstElementChild.style.width = `${100 / 23 * valeur}%`;
+	progress.lastElementChild.textContent = `${valeur}/23`;
 }
 
 //function that gets the result of the test
@@ -394,7 +403,7 @@ function getResult(list, counter) {
 
 	//facteurs pronostiques
 
-	let facPro = pro.includes('oui');
+	let facPro = pro.includes('oui') || list[11]>=70;
 	let noFacPro = !pro.includes('oui');
 
 	//gravité mineures positives
@@ -425,12 +434,24 @@ function getResult(list, counter) {
 
 	let age = list[11];
 
-	if (counter === 23) {
+	if (counter === 13 && age < 15) {
 		circles[1].style.display = 'none';
 		circles[2].style.display = 'block';
 		questions.classList.remove('visible');
 		progress.classList.remove('flex');
 		resultat.style.display = 'block';
+
+		resultat.children[1].lastElementChild.textContent =
+			'Prenez contact avec votre médecin généraliste au moindre doute. Cette application n’est pour l’instant pas adaptée aux personnes de moins de 15 ans. En cas d’urgence, appeler le 15';
+	}
+
+	if (counter === 24) {
+		circles[1].style.display = 'none';
+		circles[2].style.display = 'block';
+		questions.classList.remove('visible');
+		progress.classList.remove('flex');
+		resultat.style.display = 'block';
+
 		if (
 			(fievre && malGorge) ||
 			(fievre && courbatures) ||
@@ -465,13 +486,13 @@ function getResult(list, counter) {
 					'téléconsultation ou médecin généraliste ou visite à domicile ';
 				resultat.children[1].lastElementChild.textContent =
 					'appelez le 141 si une gêne respiratoire ou des difficultés importantes pour s’alimenter ou boire pendant plus de 24h apparaissent';
-			} else if (FacPro && noGene && noDiffAlim && noBasseFievre && (hauteFievre || fatigue || malaise)) {
+			} else if (facPro && noGene && noDiffAlim && noBasseFievre && (hauteFievre || fatigue || malaise)) {
 				resultat.children[1].firstElementChild.textContent =
 					'téléconsultation ou médecin généraliste ou visite à domicile ';
 				resultat.children[1].lastElementChild.textContent =
 					'appelez le 141 si une gêne respiratoire ou des difficultés importantes pour s’alimenter ou boire pendant plus de 24h apparaissent';
 			} else if (
-				FacPro &&
+				facPro &&
 				noGene &&
 				noDiffAlim &&
 				noBasseFievre &&
@@ -486,7 +507,7 @@ function getResult(list, counter) {
 			}
 		}
 
-		if (fievre && toux) {
+		else if (fievre && toux) {
 			if (
 				(noFacPro && noHauteFievre && noFatigue && noMalaise && noGene && noDiffAlim && noBasseFievre) ||
 				(noFacPro && noBasseFievre && noGene && noDiffAlim && (hauteFievre || fatigue || malaise))
@@ -498,13 +519,13 @@ function getResult(list, counter) {
 					'téléconsultation ou médecin généraliste ou visite à domicile ';
 				resultat.children[1].lastElementChild.textContent =
 					'appelez le 141 si une gêne respiratoire ou des difficultés importantes pour s’alimenter ou boire pendant plus de 24h apparaissent';
-			} else if (FacPro && noGene && noDiffAlim && noBasseFievre && (hauteFievre || fatigue || malaise)) {
+			} else if (facPro && noGene && noDiffAlim && noBasseFievre && (hauteFievre || fatigue || malaise)) {
 				resultat.children[1].firstElementChild.textContent =
 					'téléconsultation ou médecin généraliste ou visite à domicile ';
 				resultat.children[1].lastElementChild.textContent =
 					'appelez le 141 si une gêne respiratoire ou des difficultés importantes pour s’alimenter ou boire pendant plus de 24h apparaissent';
 			} else if (
-				FacPro &&
+				facPro &&
 				noGene &&
 				noDiffAlim &&
 				noBasseFievre &&
@@ -519,7 +540,7 @@ function getResult(list, counter) {
 			}
 		}
 
-		if (fievre || toux || malGorge || courbatures) {
+		else if (fievre || toux || malGorge || courbatures) {
 			if (noHauteFievre && noFatigue && noMalaise && noGene && noDiffAlim && noBasseFievre) {
 				resultat.children[1].lastElementChild.textContent =
 					'Votre situation ne relève probablement pas du Covid-19. Consultez votre médecin au moindre doute.';
@@ -529,9 +550,13 @@ function getResult(list, counter) {
 			}
 		}
 
-		if (!list.includes('oui') && noMalaise) {
+		else if (!list.includes('oui') && noMalaise) {
 			resultat.children[1].lastElementChild.textContent =
 				'Votre situation ne relève probablement pas du Covid-19. N’hésitez pas à contacter votre médecin en cas de doute. Vous pouvez refaire le test en cas de nouveau symptôme pour réévaluer la   situation.   Pour   toute information concernant   le   Covid-19 allez vers la page d’accueil.';
+		}else{
+
+			resultat.children[1].lastElementChild.textContent =
+			'Restez chez vous au maximum en attendant que les symptômes disparaissent. Prenez votre température deux fois par jour. Rappel des mesures d’hygiène.'
 		}
 	}
 }
