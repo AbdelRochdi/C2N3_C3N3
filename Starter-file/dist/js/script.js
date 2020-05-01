@@ -93,7 +93,7 @@ const questionsList = [
 		choices: `<div class="flex-radio">
 		<div class="mini">
 		<label for="fatigue">Fatigué</label>
-		<input type="radio" value="fatigue" id="fatigue" name="choice"><br>
+		<input type="radio" value="fatigué" id="fatigue" name="choice"><br>
 		</div>
 		<div class="mini">
 		<label for="bien">Bien</label>
@@ -103,7 +103,7 @@ const questionsList = [
 	<div class="flex-radio">
 		<div class="mini">
 		<label for="trop-fatigue">Trop fatigué</label>
-		<input type="radio" value="trop-fatigue" id="trop-fatigue" name="choice"><br>
+		<input type="radio" value="trop-fatigué" id="trop-fatigue" name="choice"><br>
 	</div>
 		<div class="mini">
 		<label for="moyen">Moyen</label>
@@ -283,7 +283,7 @@ reprendre.addEventListener('click', () => {
 //returning to the previous question and deleting the last value
 
 previous.addEventListener('click', () => {
-	counter -= 1;
+	
 
 	if (counter <= 1) {
 		previous.classList.remove('visible');
@@ -292,6 +292,17 @@ previous.addEventListener('click', () => {
 	if (counter < 23) {
 		next.textContent = 'Question suivante';
 	}
+
+	if (counter === 3 && values[0] === 'non') {
+		values.pop();
+		counter-=1;
+	}
+	if (counter === 9 && values[6] === 'non') {
+		values.pop();
+		counter-=1;
+	}
+
+	counter -= 1;
 
 	values.pop();
 
@@ -332,11 +343,11 @@ next.addEventListener('click', () => {
 			if (answer[i].checked) {
 				if (counter === 1 && answer[i].value === 'non') {
 					values.push(answer[i].value);
-					values.push('passed');
+					values.push(37);
 					counter += 2;
 				} else if (counter === 7 && answer[i].value === 'non') {
 					values.push(answer[i].value);
-					values.push('passed');
+					values.push('non');
 					counter += 2;
 				} else {
 					values.push(answer[i].value);
@@ -366,12 +377,12 @@ next.addEventListener('click', () => {
 
 function renderQuestions(step) {
 	if (step < 24) {
-	let currentQuestion = questionsList.find((ques) => {
-		return ques.number == step;
-	});
+		let currentQuestion = questionsList.find((ques) => {
+			return ques.number == step;
+		});
 
-	questionText.textContent = currentQuestion.text;
-	form.innerHTML = currentQuestion.choices;
+		questionText.textContent = currentQuestion.text;
+		form.innerHTML = currentQuestion.choices;
 	}
 }
 
@@ -393,7 +404,8 @@ function getResult(list, counter) {
 	let courbatures = list[3] === 'oui';
 	let diarrhee = list[5] === 'oui';
 
-	//symptomes negatives
+
+	//symptomes négatives
 
 	let noFievre = list[0] === 'non';
 	let noToux = list[2] === 'non';
@@ -403,14 +415,14 @@ function getResult(list, counter) {
 
 	//facteurs pronostiques
 
-	let facPro = pro.includes('oui') || list[11]>=70;
+	let facPro = pro.includes('oui');
 	let noFacPro = !pro.includes('oui');
 
 	//gravité mineures positives
 
 	let hauteFievre = list[1] > 39;
 	let fatigue = list[6] === 'oui';
-	let malaise = list[10] === 'fatigue' || list[10] === 'trop-fatigue';
+	let malaise = list[10] === 'fatigué' || list[10] === 'trop-fatigué';
 
 	//gravité mineures négatives
 
@@ -486,7 +498,11 @@ function getResult(list, counter) {
 					'téléconsultation ou médecin généraliste ou visite à domicile ';
 				resultat.children[1].lastElementChild.textContent =
 					'appelez le 141 si une gêne respiratoire ou des difficultés importantes pour s’alimenter ou boire pendant plus de 24h apparaissent';
-			} else if (facPro && noGene && noDiffAlim && noBasseFievre && (hauteFievre || fatigue || malaise)) {
+			} else if (
+				(facPro && noGene && noDiffAlim && noBasseFievre && hauteFievre && noFatigue && noMalaise) ||
+				(facPro && noGene && noDiffAlim && noBasseFievre && fatigue && noHauteFievre && noMalaise) ||
+				(facPro && noGene && noDiffAlim && noBasseFievre && malaise && noHauteFievre && noFatigue)
+			) {
 				resultat.children[1].firstElementChild.textContent =
 					'téléconsultation ou médecin généraliste ou visite à domicile ';
 				resultat.children[1].lastElementChild.textContent =
@@ -507,7 +523,7 @@ function getResult(list, counter) {
 			}
 		}
 
-		else if (fievre && toux) {
+		if (fievre && toux) {
 			if (
 				(noFacPro && noHauteFievre && noFatigue && noMalaise && noGene && noDiffAlim && noBasseFievre) ||
 				(noFacPro && noBasseFievre && noGene && noDiffAlim && (hauteFievre || fatigue || malaise))
@@ -519,7 +535,9 @@ function getResult(list, counter) {
 					'téléconsultation ou médecin généraliste ou visite à domicile ';
 				resultat.children[1].lastElementChild.textContent =
 					'appelez le 141 si une gêne respiratoire ou des difficultés importantes pour s’alimenter ou boire pendant plus de 24h apparaissent';
-			} else if (facPro && noGene && noDiffAlim && noBasseFievre && (hauteFievre || fatigue || malaise)) {
+			} else if ((facPro && noGene && noDiffAlim && noBasseFievre && hauteFievre && noFatigue && noMalaise) ||
+			(facPro && noGene && noDiffAlim && noBasseFievre && fatigue && noHauteFievre && noMalaise) ||
+			(facPro && noGene && noDiffAlim && noBasseFievre && malaise && noHauteFievre && noFatigue)) {
 				resultat.children[1].firstElementChild.textContent =
 					'téléconsultation ou médecin généraliste ou visite à domicile ';
 				resultat.children[1].lastElementChild.textContent =
@@ -540,7 +558,11 @@ function getResult(list, counter) {
 			}
 		}
 
-		else if (fievre || toux || malGorge || courbatures) {
+		if ((fievre && noToux && noMalGorge && noCourbatures && noDiarrhee)
+		|| (noFievre && toux && noMalGorge && noCourbatures && noDiarrhee)
+		|| (noFievre && noToux && malGorge && noCourbatures && noDiarrhee)
+		|| (noFievre && noToux && noMalGorge && courbatures && noDiarrhee)
+		) {
 			if (noHauteFievre && noFatigue && noMalaise && noGene && noDiffAlim && noBasseFievre) {
 				resultat.children[1].lastElementChild.textContent =
 					'Votre situation ne relève probablement pas du Covid-19. Consultez votre médecin au moindre doute.';
@@ -550,13 +572,9 @@ function getResult(list, counter) {
 			}
 		}
 
-		else if (!list.includes('oui') && noMalaise) {
+		if (!list.includes('oui') && noMalaise) {
 			resultat.children[1].lastElementChild.textContent =
 				'Votre situation ne relève probablement pas du Covid-19. N’hésitez pas à contacter votre médecin en cas de doute. Vous pouvez refaire le test en cas de nouveau symptôme pour réévaluer la   situation.   Pour   toute information concernant   le   Covid-19 allez vers la page d’accueil.';
-		}else{
-
-			resultat.children[1].lastElementChild.textContent =
-			'Restez chez vous au maximum en attendant que les symptômes disparaissent. Prenez votre température deux fois par jour. Rappel des mesures d’hygiène.'
 		}
 	}
 }
