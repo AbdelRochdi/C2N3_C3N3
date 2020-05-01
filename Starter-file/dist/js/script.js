@@ -421,13 +421,13 @@ function getResult(list, counter) {
 	//gravité mineures positives
 
 	let hauteFievre = list[1] > 39;
-	let fatigue = list[6] === 'oui';
+	let fatigue = list[7] === 'oui';
 	let malaise = list[10] === 'fatigué' || list[10] === 'trop-fatigué';
 
 	//gravité mineures négatives
 
 	let noHauteFievre = list[1] < 39;
-	let noFatigue = list[6] === 'non';
+	let noFatigue = list[7] === 'non';
 	let noMalaise = list[10] === 'bien' || list[10] === 'moyen';
 
 	// gravité majeures positives
