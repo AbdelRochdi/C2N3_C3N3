@@ -283,8 +283,6 @@ reprendre.addEventListener('click', () => {
 //returning to the previous question and deleting the last value
 
 previous.addEventListener('click', () => {
-	
-
 	if (counter <= 1) {
 		previous.classList.remove('visible');
 	}
@@ -295,11 +293,11 @@ previous.addEventListener('click', () => {
 
 	if (counter === 3 && values[0] === 'non') {
 		values.pop();
-		counter-=1;
+		counter -= 1;
 	}
 	if (counter === 9 && values[6] === 'non') {
 		values.pop();
-		counter-=1;
+		counter -= 1;
 	}
 
 	counter -= 1;
@@ -395,6 +393,7 @@ function addProgress(valeur) {
 
 function getResult(list, counter) {
 	let pro = list.slice(11);
+	let symp = list.slice(0, 10);
 
 	//symptomes positive
 
@@ -404,7 +403,6 @@ function getResult(list, counter) {
 	let courbatures = list[3] === 'oui';
 	let diarrhee = list[5] === 'oui';
 
-
 	//symptomes négatives
 
 	let noFievre = list[0] === 'non';
@@ -412,6 +410,10 @@ function getResult(list, counter) {
 	let noMalGorge = list[4] === 'non';
 	let noCourbatures = list[3] === 'non';
 	let noDiarrhee = list[5] === 'non';
+
+	//pas de symptomes
+
+	let noSypms = !symp.includes('oui');
 
 	//facteurs pronostiques
 
@@ -535,9 +537,11 @@ function getResult(list, counter) {
 					'téléconsultation ou médecin généraliste ou visite à domicile ';
 				resultat.children[1].lastElementChild.textContent =
 					'appelez le 141 si une gêne respiratoire ou des difficultés importantes pour s’alimenter ou boire pendant plus de 24h apparaissent';
-			} else if ((facPro && noGene && noDiffAlim && noBasseFievre && hauteFievre && noFatigue && noMalaise) ||
-			(facPro && noGene && noDiffAlim && noBasseFievre && fatigue && noHauteFievre && noMalaise) ||
-			(facPro && noGene && noDiffAlim && noBasseFievre && malaise && noHauteFievre && noFatigue)) {
+			} else if (
+				(facPro && noGene && noDiffAlim && noBasseFievre && hauteFievre && noFatigue && noMalaise) ||
+				(facPro && noGene && noDiffAlim && noBasseFievre && fatigue && noHauteFievre && noMalaise) ||
+				(facPro && noGene && noDiffAlim && noBasseFievre && malaise && noHauteFievre && noFatigue)
+			) {
 				resultat.children[1].firstElementChild.textContent =
 					'téléconsultation ou médecin généraliste ou visite à domicile ';
 				resultat.children[1].lastElementChild.textContent =
@@ -558,10 +562,12 @@ function getResult(list, counter) {
 			}
 		}
 
-		if ((fievre && noToux && noMalGorge && noCourbatures && noDiarrhee)
-		|| (noFievre && toux && noMalGorge && noCourbatures && noDiarrhee)
-		|| (noFievre && noToux && malGorge && noCourbatures && noDiarrhee)
-		|| (noFievre && noToux && noMalGorge && courbatures && noDiarrhee)
+		if (
+			(fievre && noToux && noDiarrhee) ||
+			(noFievre && toux && noMalGorge && noCourbatures) ||
+			(noFievre && noToux && malGorge) ||
+			(noToux && courbatures) ||
+			(noFievre && diarrhee)
 		) {
 			if (noHauteFievre && noFatigue && noMalaise && noGene && noDiffAlim && noBasseFievre) {
 				resultat.children[1].lastElementChild.textContent =
@@ -572,7 +578,7 @@ function getResult(list, counter) {
 			}
 		}
 
-		if (!list.includes('oui') && noMalaise) {
+		if (noSypms) {
 			resultat.children[1].lastElementChild.textContent =
 				'Votre situation ne relève probablement pas du Covid-19. N’hésitez pas à contacter votre médecin en cas de doute. Vous pouvez refaire le test en cas de nouveau symptôme pour réévaluer la   situation.   Pour   toute information concernant   le   Covid-19 allez vers la page d’accueil.';
 		}
