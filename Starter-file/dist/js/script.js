@@ -370,7 +370,7 @@ function addProgress(valeur) {
 
 function getResult(list, counter) {
 	let pro = list.slice(11);
-	let symp = list.slice(0, 10);
+	let symp = list.slice(0, 5);
 
 	//symptomes positive
 
