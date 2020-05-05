@@ -271,6 +271,7 @@ previous.addEventListener('click', () => {
 	if (counter === 3 && values[0] === 'non') {
 		values.pop();
 		counter -= 1;
+		previous.classList.remove('visible');
 	}
 	if (counter === 9 && values[6] === 'non') {
 		values.pop();
@@ -443,14 +444,39 @@ function getResult(list, counter) {
 		progress.classList.remove('flex');
 		resultat.style.display = 'block';
 
-		if (
-			(fievre && malGorge) ||
-			(fievre && courbatures) ||
-			(toux && malGorge) ||
-			(toux && courbatures) ||
-			(fievre && diarrhee)
-		) {
-			if (
+		if (fievre || (toux && malGorge) || (toux && courbatures)) {
+			if (basseFievre || gene || diffAlim) {
+				resultat.children[1].lastElementChild.textContent = 'veuillez appeler le numéro 141';
+			} else if (
+				(facPro &&
+					noGene &&
+					noDiffAlim &&
+					noBasseFievre &&
+					((hauteFievre && fatigue && malaise) ||
+						(hauteFievre && fatigue) ||
+						(fatigue && malaise) ||
+						(hauteFievre && malaise))) ||
+				(facPro && noGene && noDiffAlim && noBasseFievre && hauteFievre && noFatigue && noMalaise) ||
+				(facPro && noGene && noDiffAlim && noBasseFievre && fatigue && noHauteFievre && noMalaise) ||
+				(facPro && noGene && noDiffAlim && noBasseFievre && malaise && noHauteFievre && noFatigue)
+			) {
+				resultat.children[1].lastElementChild.textContent = 'veuillez appeler le numéro 141';
+			} else if (facPro && noHauteFievre && noFatigue && noMalaise && noGene && noDiffAlim && noBasseFievre) {
+				resultat.children[1].firstElementChild.textContent =
+					'téléconsultation ou médecin généraliste ou visite à domicile ';
+				resultat.children[1].lastElementChild.textContent =
+					'appelez le 141 si une gêne respiratoire ou des difficultés importantes pour s’alimenter ou boire pendant plus de 24h apparaissent';
+			} else if (
+				(age > 50 &&
+					age <= 69 &&
+					(noFacPro && noHauteFievre && noFatigue && noMalaise && noGene && noDiffAlim && noBasseFievre)) ||
+				(noFacPro && noBasseFievre && noGene && noDiffAlim && (hauteFievre || fatigue || malaise))
+			) {
+				resultat.children[1].firstElementChild.textContent =
+					'téléconsultation ou médecin généraliste ou visite à domicile ';
+				resultat.children[1].lastElementChild.textContent =
+					'appelez le 141 si une gêne respiratoire ou des difficultés importantes pour s’alimenter ou boire pendant plus de 24h apparaissent';
+			} else if (
 				age < 50 &&
 				noFacPro &&
 				noHauteFievre &&
@@ -462,84 +488,11 @@ function getResult(list, counter) {
 			) {
 				resultat.children[1].lastElementChild.textContent =
 					'nous vous conseillons de rester à votre domicile et de contacter votre médecin en cas d’apparition de nouveaux symptômes. Vous pourrez aussi utiliser à nouveau l’application pour réévaluer vos symptômes';
-			} else if (
-				age > 50 &&
-				age <= 69 &&
-				((noFacPro && noHauteFievre && noFatigue && noMalaise && noGene && noDiffAlim && noBasseFievre) ||
-					(noFacPro && noBasseFievre && noGene && noDiffAlim && (hauteFievre || fatigue || malaise)))
-			) {
-				resultat.children[1].firstElementChild.textContent =
-					'téléconsultation ou médecin généraliste ou visite à domicile ';
+			}else {
 				resultat.children[1].lastElementChild.textContent =
-					'appelez le 141 si une gêne respiratoire ou des difficultés importantes pour s’alimenter ou boire pendant plus de 24h apparaissent';
-			} else if (facPro && noHauteFievre && noFatigue && noMalaise && noGene && noDiffAlim && noBasseFievre) {
-				resultat.children[1].firstElementChild.textContent =
-					'téléconsultation ou médecin généraliste ou visite à domicile ';
-				resultat.children[1].lastElementChild.textContent =
-					'appelez le 141 si une gêne respiratoire ou des difficultés importantes pour s’alimenter ou boire pendant plus de 24h apparaissent';
-			} else if (
-				(facPro && noGene && noDiffAlim && noBasseFievre && hauteFievre && noFatigue && noMalaise) ||
-				(facPro && noGene && noDiffAlim && noBasseFievre && fatigue && noHauteFievre && noMalaise) ||
-				(facPro && noGene && noDiffAlim && noBasseFievre && malaise && noHauteFievre && noFatigue)
-			) {
-				resultat.children[1].firstElementChild.textContent =
-					'téléconsultation ou médecin généraliste ou visite à domicile ';
-				resultat.children[1].lastElementChild.textContent =
-					'appelez le 141 si une gêne respiratoire ou des difficultés importantes pour s’alimenter ou boire pendant plus de 24h apparaissent';
-			} else if (
-				facPro &&
-				noGene &&
-				noDiffAlim &&
-				noBasseFievre &&
-				((hauteFievre && fatigue && malaise) ||
-					(hauteFievre && fatigue) ||
-					(fatigue && malaise) ||
-					(hauteFievre && malaise))
-			) {
-				resultat.children[1].lastElementChild.textContent = 'veuillez appeler le numéro 141';
-			} else if (basseFievre || gene || diffAlim) {
-				resultat.children[1].lastElementChild.textContent = 'veuillez appeler le numéro 141';
+					'Votre situation ne relève probablement pas du Covid-19. N’hésitez pas à contacter votre médecin en cas de doute. Vous pouvez refaire le test en cas de nouveau symptôme pour réévaluer la   situation.   Pour   toute information concernant   le   Covid-19 allez vers la page d’accueil.';
 			}
-		}
-
-		if (fievre && toux) {
-			if (
-				(noFacPro && noHauteFievre && noFatigue && noMalaise && noGene && noDiffAlim && noBasseFievre) ||
-				(noFacPro && noBasseFievre && noGene && noDiffAlim && (hauteFievre || fatigue || malaise))
-			) {
-				resultat.children[1].lastElementChild.textContent =
-					'téléconsultation ou médecin généraliste ou visite à domicile ';
-			} else if (facPro && noHauteFievre && noFatigue && noMalaise && noGene && noDiffAlim && noBasseFievre) {
-				resultat.children[1].firstElementChild.textContent =
-					'téléconsultation ou médecin généraliste ou visite à domicile ';
-				resultat.children[1].lastElementChild.textContent =
-					'appelez le 141 si une gêne respiratoire ou des difficultés importantes pour s’alimenter ou boire pendant plus de 24h apparaissent';
-			} else if (
-				(facPro && noGene && noDiffAlim && noBasseFievre && hauteFievre && noFatigue && noMalaise) ||
-				(facPro && noGene && noDiffAlim && noBasseFievre && fatigue && noHauteFievre && noMalaise) ||
-				(facPro && noGene && noDiffAlim && noBasseFievre && malaise && noHauteFievre && noFatigue)
-			) {
-				resultat.children[1].firstElementChild.textContent =
-					'téléconsultation ou médecin généraliste ou visite à domicile ';
-				resultat.children[1].lastElementChild.textContent =
-					'appelez le 141 si une gêne respiratoire ou des difficultés importantes pour s’alimenter ou boire pendant plus de 24h apparaissent';
-			} else if (
-				facPro &&
-				noGene &&
-				noDiffAlim &&
-				noBasseFievre &&
-				((hauteFievre && fatigue && malaise) ||
-					(hauteFievre && fatigue) ||
-					(fatigue && malaise) ||
-					(hauteFievre && malaise))
-			) {
-				resultat.children[1].lastElementChild.textContent = 'veuillez appeler le numéro 141';
-			} else if (basseFievre || gene || diffAlim) {
-				resultat.children[1].lastElementChild.textContent = 'veuillez appeler le numéro 141';
-			}
-		}
-
-		if (
+		} else if (
 			(fievre && noToux && noDiarrhee) ||
 			(noFievre && toux && noMalGorge && noCourbatures) ||
 			(noFievre && noToux && malGorge) ||
@@ -549,15 +502,18 @@ function getResult(list, counter) {
 			if (noHauteFievre && noFatigue && noMalaise && noGene && noDiffAlim && noBasseFievre) {
 				resultat.children[1].lastElementChild.textContent =
 					'Votre situation ne relève probablement pas du Covid-19. Consultez votre médecin au moindre doute.';
-			} else if (facPro || hauteFievre || fatigue || malaise || gene || diffAlim || basseFievre) {
+			} else if (
+				(noFacPro && noGene && noDiffAlim && noBasseFievre && hauteFievre && noFatigue && noMalaise) ||
+				(noFacPro && noGene && noDiffAlim && noBasseFievre && fatigue && noHauteFievre && noMalaise) ||
+				(noFacPro && noGene && noDiffAlim && noBasseFievre && malaise && noHauteFievre && noFatigue) ||
+				(facPro && noGene && noDiffAlim && noBasseFievre && noMalaise && noHauteFievre && noFatigue)
+			) {
 				resultat.children[1].lastElementChild.textContent =
 					'Votre situation ne relève probablement pas du Covid-19. Un avis médical est recommandé. Au moindre doute, appelez le 141. ';
-			}
-		}
-
-		if (noSypms) {
+			} else {
 			resultat.children[1].lastElementChild.textContent =
 				'Votre situation ne relève probablement pas du Covid-19. N’hésitez pas à contacter votre médecin en cas de doute. Vous pouvez refaire le test en cas de nouveau symptôme pour réévaluer la   situation.   Pour   toute information concernant   le   Covid-19 allez vers la page d’accueil.';
 		}
 	}
+}
 }
